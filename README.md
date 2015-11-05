@@ -75,4 +75,11 @@ As there is no egg released on pypi yet, just download/clone this repository to 
 > /path/to/your/python setup.py install
 ```
 
-to install it.
+to install it or
+
+```
+> cd /path/to/your/pixget
+> /path/to/your/python setup.py test
+```
+
+to run the tests.
