@@ -10,7 +10,6 @@ import requests
 class PixGet(object):
 
     def __init__(self, infile, output):
-        """ """
         self.infile = infile
         self.output = output
         self.valid_lines = []
@@ -18,7 +17,7 @@ class PixGet(object):
         self.filenames = {}
 
     def run(self):
-        """ """
+        """ Read the infile, make the requests and show the output. """
         self._read_infile()
 
         print "\nGetting %s urls...\n" % (len(self.valid_lines))
@@ -35,6 +34,8 @@ class PixGet(object):
             print "\n".join(self.invalid_lines)
 
     def _read_infile(self):
+        """ Read the given infile. Strip the lines and sort them to
+        valid_lines or invalid_lines. """
         with open(self.infile, 'r') as infile:
             for line in infile:
                 stripped = line.strip()
@@ -46,12 +47,12 @@ class PixGet(object):
                         self.invalid_lines.append(stripped)
 
     def _is_valid(self, line):
-        """ a line is valid if there is some content in it and
+        """ A line is valid if there is some content in it and
         it looks like a url. """
         return validators.url(line) == True
 
     def _make_request(self, url):
-        """ make the request and check the result """
+        """ Make the request and check the result. """
 
         response = requests.get(url)
         if response.status_code not in [200]:
@@ -72,7 +73,8 @@ class PixGet(object):
         return "%s" % (target)
 
     def _generate_filename(self, url, content_type):
-        """ """
+        """ Generate the local filename, based on the url. If a filename
+        is given multiple times, add a counter. """
         filename = urlparse(url).path.split('/')[-1]
         ## some image urls might not have a filename suffix, so add it
         if '.' not in filename:
