@@ -1,0 +1,11 @@
+Todos:
+
+* tests
+* filename handling: check encoding for filesystem
+* filename - urlunquoting: save url "my%20image.jpg" as "my image.jpg"
+* output directory: flag for overwriting existing files in given output directory
+* output directory: flag to create not-exisiting output directory
+* argument parsing: download urls given by args
+* silent mode: less output for cron jobs
+* request timeout handling via flags
+* threading for simultaneous downloads
